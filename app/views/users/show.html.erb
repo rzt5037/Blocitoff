@@ -1,4 +1,25 @@
-<h3>User: <%= @user.email %></h3>
-<h4>ID: <%= @user.id %></h4>
-<h4>Created At: <%= @user.created_at %></h4>
-<h4>Updated At: <%= @user.updated_at %></h4>
+<div class="row">
+  <div class="col-md-12">
+    <h3>User: <%= @user.email %></h3>
+    <h4>ID: <%= @user.id %></h4>
+    </br>
+    </br>
+  </div>
+</div>
+
+<div class="row">
+  <div class="pull-left col-md-8">
+    <% if @items %>
+      <% @items.each do |item| %>
+        <%= render partial: 'items/item', locals: {item: item} %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <% if current_user.id.to_i == params[:id].to_i %>
+    <div class="pull-right col-md-4">
+      <p>Add new to-do item:</p>
+      <%= render partial: 'items/form', locals: {item: @item} %>
+    </div>
+  <% end %>
+</div>
