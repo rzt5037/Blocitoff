@@ -5744,3 +5744,372 @@ Processing by UsersController#show as HTML
   Rendered items/_item.html.erb (0.1ms)
   Rendered users/show.html.erb within layouts/application (3.9ms)
 Completed 200 OK in 29ms (Views: 27.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/1" for ::1 at 2018-02-15 08:57:32 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mItem Load (0.6ms)[0m  SELECT "items".* FROM "items" WHERE "items"."user_id" = ?  [["user_id", 1]]
+  Rendered items/_item.html.erb (482.2ms)
+  Rendered users/show.html.erb within layouts/application (489.0ms)
+Completed 401 Unauthorized in 546ms (ActiveRecord: 2.0ms)
+
+ActionView::Template::Error (undefined method `item_path' for #<#<Class:0x007fb1d1bd6188>:0x007fb1d1bce1b8>):
+     6:     <small>
+     7:       created <%= time_ago_in_words(item.created_at) %> ago <br>
+     8:     </small>
+     9:     <%= link_to "", item, method: :delete, class: 'glyphicon glyphicon-ok' %>
+    10:   </div>
+    11: </div>
+  app/views/items/_item.html.erb:9:in `_app_views_items__item_html_erb__230135896314391204_70200897962740'
+  app/views/users/show.html.erb:13:in `block in _app_views_users_show_html_erb__1556486495735331579_70200852306940'
+  app/views/users/show.html.erb:12:in `_app_views_users_show_html_erb__1556486495735331579_70200852306940'
+
+
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.5ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (88.9ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (74.1ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (169.9ms)
+
+
+Started GET "/users/1" for ::1 at 2018-02-15 08:59:19 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mItem Load (1.2ms)[0m  SELECT "items".* FROM "items" WHERE "items"."user_id" = ?  [["user_id", 1]]
+  Rendered items/_item.html.erb (472.7ms)
+  Rendered users/show.html.erb within layouts/application (481.1ms)
+Completed 401 Unauthorized in 538ms (ActiveRecord: 2.6ms)
+
+ActionView::Template::Error (No route matches {:action=>"destroy", :controller=>"items", :id=>nil, :user_id=>"1"} missing required keys: [:id]):
+     6:     <small>
+     7:       created <%= time_ago_in_words(item.created_at) %> ago <br>
+     8:     </small>
+     9:     <%= link_to "", user_item_path(params[:id]), item, method: :delete, class: 'glyphicon glyphicon-ok' %>
+    10:   </div>
+    11: </div>
+  app/views/items/_item.html.erb:9:in `_app_views_items__item_html_erb___1017184809674221882_70126484587520'
+  app/views/users/show.html.erb:13:in `block in _app_views_users_show_html_erb___2754543451434773968_70126484739620'
+  app/views/users/show.html.erb:12:in `_app_views_users_show_html_erb___2754543451434773968_70126484739620'
+
+
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.6ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (79.1ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (66.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (145.5ms)
+
+
+Started GET "/users/1" for ::1 at 2018-02-15 09:00:21 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mItem Load (0.2ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered items/_item.html.erb (2.9ms)
+  Rendered items/_item.html.erb (1.8ms)
+  Rendered users/show.html.erb within layouts/application (9.3ms)
+Completed 200 OK in 291ms (Views: 288.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/1" for ::1 at 2018-02-15 09:00:35 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mItem Load (0.1ms)[0m  SELECT "items".* FROM "items" WHERE "items"."user_id" = ?  [["user_id", 1]]
+  Rendered items/_item.html.erb (3.0ms)
+  Rendered users/show.html.erb within layouts/application (5.3ms)
+Completed 401 Unauthorized in 14ms (ActiveRecord: 0.3ms)
+
+ActionView::Template::Error (wrong number of arguments (4 for 0..3)):
+     6:     <small>
+     7:       created <%= time_ago_in_words(item.created_at) %> ago <br>
+     8:     </small>
+     9:     <%= link_to "", user_item_path(params[:id],item.id), item, method: :delete, class: 'glyphicon glyphicon-ok' %>
+    10:   </div>
+    11: </div>
+  app/views/items/_item.html.erb:9:in `_app_views_items__item_html_erb___1017184809674221882_70126519125700'
+  app/views/users/show.html.erb:13:in `block in _app_views_users_show_html_erb___2754543451434773968_70126484739620'
+  app/views/users/show.html.erb:12:in `_app_views_users_show_html_erb___2754543451434773968_70126484739620'
+
+
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.6ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.1ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (86.0ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.7ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (66.5ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/aetherfang/.rvm/gems/ruby-2.2.1@rails425/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (148.9ms)
+
+
+Started GET "/users/1" for ::1 at 2018-02-15 09:00:54 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mItem Load (0.3ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered items/_item.html.erb (0.9ms)
+  Rendered items/_item.html.erb (0.4ms)
+  Rendered users/show.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 39ms (Views: 37.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/bootstrap/glyphicons-halflings-regular-fe185d11a49676890d47bb783312a0cda5a44c4039214094e7957b4c040ef11c.woff2" for ::1 at 2018-02-15 09:00:54 -0700
+
+
+Started GET "/users/1" for ::1 at 2018-02-15 09:01:18 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mItem Load (0.1ms)[0m  SELECT "items".* FROM "items" WHERE "items"."user_id" = ?  [["user_id", 1]]
+  Rendered items/_item.html.erb (0.7ms)
+  Rendered items/_item.html.erb (0.1ms)
+  Rendered users/show.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 36ms (Views: 34.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/6" for ::1 at 2018-02-15 09:01:28 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."user_id" = ?[0m  [["user_id", 6]]
+  Rendered items/_form.html.erb (21.8ms)
+  Rendered users/show.html.erb within layouts/application (25.0ms)
+Completed 200 OK in 55ms (Views: 52.5ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users/6/items" for ::1 at 2018-02-15 09:01:31 -0700
+Processing by ItemsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"1+j5N8exMMGDuGsr0pQOSvVDrNt2u23IEkctSeot95muxZgC7RgyWqvQGgj5xniE/XEBEOjC8wHM2ktLWIOj/g==", "item"=>{"name"=>"1234", "user_id"=>"6"}, "commit"=>"Save", "user_id"=>"6"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "items" ("name", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "1234"], ["user_id", 6], ["created_at", "2018-02-15 16:01:31.626066"], ["updated_at", "2018-02-15 16:01:31.626066"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/users/6
+Completed 302 Found in 6ms (ActiveRecord: 2.1ms)
+
+
+Started GET "/users/6" for ::1 at 2018-02-15 09:01:31 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35mItem Load (0.1ms)[0m  SELECT "items".* FROM "items" WHERE "items"."user_id" = ?  [["user_id", 6]]
+  Rendered items/_item.html.erb (0.5ms)
+  Rendered items/_form.html.erb (0.7ms)
+  Rendered users/show.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 29ms (Views: 26.8ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users/6/items" for ::1 at 2018-02-15 09:01:35 -0700
+Processing by ItemsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+jbe3oDcOlguOd0KrtFGc9txoqDw6fyuOa6TGMWBg0eDG7/rqnU4wwZRrCmFgzC900MPa26QYmfnM/Uady/XIA==", "item"=>{"name"=>"asdf", "user_id"=>"6"}, "commit"=>"Save", "user_id"=>"6"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "items" ("name", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "asdf"], ["user_id", 6], ["created_at", "2018-02-15 16:01:35.408544"], ["updated_at", "2018-02-15 16:01:35.408544"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+Redirected to http://localhost:3000/users/6
+Completed 302 Found in 5ms (ActiveRecord: 1.7ms)
+
+
+Started GET "/users/6" for ::1 at 2018-02-15 09:01:35 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."user_id" = ?[0m  [["user_id", 6]]
+  Rendered items/_item.html.erb (0.5ms)
+  Rendered items/_item.html.erb (0.4ms)
+  Rendered items/_form.html.erb (1.0ms)
+  Rendered users/show.html.erb within layouts/application (7.2ms)
+Completed 200 OK in 35ms (Views: 32.5ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/users/6/items/16" for ::1 at 2018-02-15 09:01:37 -0700
+Processing by ItemsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"BPwRLh6Lf91/IfX4rS+YCFpByz8iJ/e3bO3bDbOwx8h90XAbNCJ9RldJhNuGfe7GUnNm9LxeaX6ycL0PAR6Trw==", "user_id"=>"6", "id"=>"16"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1[0m  [["id", 16]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "items" WHERE "items"."id" = ?[0m  [["id", 16]]
+  [1m[35m (3.1ms)[0m  commit transaction
+Redirected to http://localhost:3000/users/6
+Completed 302 Found in 6ms (ActiveRecord: 3.7ms)
+
+
+Started GET "/users/6" for ::1 at 2018-02-15 09:01:37 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."user_id" = ?[0m  [["user_id", 6]]
+  Rendered items/_item.html.erb (0.4ms)
+  Rendered items/_form.html.erb (0.9ms)
+  Rendered users/show.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 28ms (Views: 25.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/6" for ::1 at 2018-02-15 09:01:39 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35mItem Load (0.1ms)[0m  SELECT "items".* FROM "items" WHERE "items"."user_id" = ?  [["user_id", 6]]
+  Rendered items/_item.html.erb (0.4ms)
+  Rendered items/_form.html.erb (0.7ms)
+  Rendered users/show.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 28ms (Views: 26.8ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users/6/items" for ::1 at 2018-02-15 09:01:42 -0700
+Processing by ItemsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"WuWQveKbpmHXg2T773Z4aotdjoQZ56ZAJhggGdC3D7kjyPGIyDKk+v/rFdjEJA6kg28jT4eeOIn4hUYbYhlb3g==", "item"=>{"name"=>"9876", "user_id"=>"6"}, "commit"=>"Save", "user_id"=>"6"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "items" ("name", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "9876"], ["user_id", 6], ["created_at", "2018-02-15 16:01:42.674924"], ["updated_at", "2018-02-15 16:01:42.674924"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+Redirected to http://localhost:3000/users/6
+Completed 302 Found in 4ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/users/6" for ::1 at 2018-02-15 09:01:42 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."user_id" = ?[0m  [["user_id", 6]]
+  Rendered items/_item.html.erb (0.4ms)
+  Rendered items/_item.html.erb (0.3ms)
+  Rendered items/_form.html.erb (1.1ms)
+  Rendered users/show.html.erb within layouts/application (6.9ms)
+Completed 200 OK in 32ms (Views: 29.4ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users/6/items" for ::1 at 2018-02-15 09:01:44 -0700
+Processing by ItemsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7Gf7Sg0I/kou42hGLwVaDGKtel8Mlm2lcwILfcj9xpaVSpp/J6H80QaLGWUEVyzCap/XlJLv82ytn21/elOS8Q==", "item"=>{"name"=>"4567", "user_id"=>"6"}, "commit"=>"Save", "user_id"=>"6"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "items" ("name", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "4567"], ["user_id", 6], ["created_at", "2018-02-15 16:01:44.441558"], ["updated_at", "2018-02-15 16:01:44.441558"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/users/6
+Completed 302 Found in 4ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/users/6" for ::1 at 2018-02-15 09:01:44 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35mItem Load (0.1ms)[0m  SELECT "items".* FROM "items" WHERE "items"."user_id" = ?  [["user_id", 6]]
+  Rendered items/_item.html.erb (0.4ms)
+  Rendered items/_item.html.erb (0.5ms)
+  Rendered items/_item.html.erb (0.3ms)
+  Rendered items/_form.html.erb (1.1ms)
+  Rendered users/show.html.erb within layouts/application (9.3ms)
+Completed 200 OK in 35ms (Views: 33.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users/6/items" for ::1 at 2018-02-15 09:01:46 -0700
+Processing by ItemsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"UQ5+scW19AAQvPEbfDgmssBVKVrJUucfAq9nikCGzGEoIx+E7xz2mzjUgDhXalB8yGeEkVcredbcMgGI8iiYBg==", "item"=>{"name"=>"jhgfd", "user_id"=>"6"}, "commit"=>"Save", "user_id"=>"6"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "items" ("name", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "jhgfd"], ["user_id", 6], ["created_at", "2018-02-15 16:01:46.230473"], ["updated_at", "2018-02-15 16:01:46.230473"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/users/6
+Completed 302 Found in 5ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/users/6" for ::1 at 2018-02-15 09:01:46 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."user_id" = ?[0m  [["user_id", 6]]
+  Rendered items/_item.html.erb (0.4ms)
+  Rendered items/_item.html.erb (0.2ms)
+  Rendered items/_item.html.erb (0.2ms)
+  Rendered items/_item.html.erb (0.2ms)
+  Rendered items/_form.html.erb (0.8ms)
+  Rendered users/show.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 34ms (Views: 32.5ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/users/6/items/18" for ::1 at 2018-02-15 09:01:47 -0700
+Processing by ItemsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"sKmFvCiVytNpweqJPG52dH4p7aLdr+4qoAWkfNpJh3jJhOSJAjzISEGpm6oXPAC6dhtAaUPWcON+mMJ+aOfTHw==", "user_id"=>"6", "id"=>"18"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1[0m  [["id", 18]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "items" WHERE "items"."id" = ?[0m  [["id", 18]]
+  [1m[35m (6.8ms)[0m  commit transaction
+Redirected to http://localhost:3000/users/6
+Completed 302 Found in 10ms (ActiveRecord: 7.3ms)
+
+
+Started GET "/users/6" for ::1 at 2018-02-15 09:01:47 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."user_id" = ?[0m  [["user_id", 6]]
+  Rendered items/_item.html.erb (0.6ms)
+  Rendered items/_item.html.erb (0.4ms)
+  Rendered items/_item.html.erb (0.3ms)
+  Rendered items/_form.html.erb (0.8ms)
+  Rendered users/show.html.erb within layouts/application (9.3ms)
+Completed 200 OK in 35ms (Views: 32.8ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/users/6/items/20" for ::1 at 2018-02-15 09:01:49 -0700
+Processing by ItemsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"To/wbNuB7ryqXYXi27WYVg4vfn1S2n6czHg3fqRvzkg3opFZ8SjsJ4I19MHw5+6YBh3Ttsyj4FUS5VF8FsGaLw==", "user_id"=>"6", "id"=>"20"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT  "items".* FROM "items" WHERE "items"."id" = ? LIMIT 1[0m  [["id", 20]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "items" WHERE "items"."id" = ?[0m  [["id", 20]]
+  [1m[35m (6.4ms)[0m  commit transaction
+Redirected to http://localhost:3000/users/6
+Completed 302 Found in 9ms (ActiveRecord: 6.8ms)
+
+
+Started GET "/users/6" for ::1 at 2018-02-15 09:01:49 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 6]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mItem Load (0.1ms)[0m  [1mSELECT "items".* FROM "items" WHERE "items"."user_id" = ?[0m  [["user_id", 6]]
+  Rendered items/_item.html.erb (0.5ms)
+  Rendered items/_item.html.erb (0.4ms)
+  Rendered items/_form.html.erb (0.7ms)
+  Rendered users/show.html.erb within layouts/application (6.5ms)
+Completed 200 OK in 29ms (Views: 27.6ms | ActiveRecord: 0.3ms)
