@@ -4,7 +4,7 @@
       <%= item.name %>
     </h4>
     <small>
-      created <%= time_ago_in_words(item.created_at) %> ago <br>
+      <%= distance_of_time_in_words(Time.now, item.created_at + 7.days)   %> remaining <br>
     </small>
     <% if current_user.id.to_i == params[:id].to_i %>
       <%= link_to "", user_item_path(params[:id],item.id), method: :delete, class: 'glyphicon glyphicon-ok' %>
